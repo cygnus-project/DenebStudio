@@ -55,10 +55,19 @@
     <Compile Include="DenebStudio.Designer.cs">
       <DependentUpon>DenebStudio.cs</DependentUpon>
     </Compile>
+    <Compile Include="IndexedTextbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IndexedTextbox.Designer.cs">
+      <DependentUpon>IndexedTextbox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DenebStudio.resx">
       <DependentUpon>DenebStudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndexedTextbox.resx">
+      <DependentUpon>IndexedTextbox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
