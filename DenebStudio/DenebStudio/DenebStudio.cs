@@ -24,6 +24,7 @@ namespace DenebStudio
             }
         }
 
+
         public DenebStudio()
         {
             InitializeComponent();
@@ -84,12 +85,12 @@ namespace DenebStudio
             {
                 if (e.Node.Tag != null)
                 {
-                    if (tabOpenedFiles.TabPages[0].Text == "Empty")
+                    /*if (tabOpenedFile.TabPages[0].Text == "Empty")
                     {
-                        tabOpenedFiles.TabPages[0].Text = GetFileName(e.Node.Tag.ToString());
-                        materialTabSelector1.Refresh();
+                        tabOpenedFile.TabPages[0].Text = GetFileName(e.Node.Tag.ToString());
+                        //materialTabSelector1.Refresh();
                     }
-                    txtCode.richTextBox1.Text = File.ReadAllText(e.Node.Tag.ToString()); 
+                    txtCode.richTextBox1.Text = File.ReadAllText(e.Node.Tag.ToString()); */
                 }
             }
         }

@@ -84,6 +84,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppContainer.Designer.cs">
+      <DependentUpon>AppContainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="DenebStudio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,12 @@
       <DependentUpon>IndexedTextbox.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectSelector.Designer.cs">
+      <DependentUpon>ProjectSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DenebStudio.resx">
       <DependentUpon>DenebStudio.cs</DependentUpon>
@@ -112,6 +124,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -129,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\EditIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
