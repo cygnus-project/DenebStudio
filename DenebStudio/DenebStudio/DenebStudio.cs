@@ -89,23 +89,31 @@ namespace DenebStudio
             {
                 if (e.Node.Tag != null)
                 {
-                    Program.path = e.Node.Tag.ToString();
-                    Program.container.Tabs.Add(new EasyTabs.TitleBarTab(Program.container)
+                    bool fileExists = false;
+                    string newPath = e.Node.Tag.ToString();
+                    int index = -1;
+                    foreach (TitleBarTab tab in Program.container.Tabs)
                     {
-                        Content = new DenebStudio
+                        index++;
+                        if (tab.Content.Text == GetFileName(newPath))
                         {
-                            Text = GetFileName(e.Node.Tag.ToString()),
-                            Icon = Icon.FromHandle(Properties.Resources.EditIcon.GetHicon())
+                            fileExists = true;
+                            Program.container.SelectedTabIndex = index;
                         }
-                    });
-                    Program.container.SelectedTabIndex = Program.container.Tabs.Count - 1;
-                    /*if (tabOpenedFile.TabPages[0].Text == "Empty")
-                    {
-                        tabOpenedFile.TabPages[0].Text = GetFileName(e.Node.Tag.ToString());
-                        //materialTabSelector1.Refresh();
                     }
-                    
-                    txtCode.richTextBox1.Text = File.ReadAllText(e.Node.Tag.ToString()); */
+                    if (!fileExists)
+                    {
+                        Program.path = newPath;
+                        Program.container.Tabs.Add(new EasyTabs.TitleBarTab(Program.container)
+                        {
+                            Content = new DenebStudio
+                            {
+                                Text = GetFileName(e.Node.Tag.ToString()),
+                                Icon = Icon.FromHandle(Properties.Resources.EditIcon.GetHicon())
+                            }
+                        });
+                        Program.container.SelectedTabIndex = Program.container.Tabs.Count - 1;
+                    }
 
                 }
             }
