@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DenebStudio));
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlCode = new System.Windows.Forms.Panel();
-            this.txtCode = new DenebStudioControls.IndexedTextbox();
             this.pnlConsole = new System.Windows.Forms.Panel();
             this.pnlConsoleTitle = new System.Windows.Forms.Panel();
             this.materialLabel1 = new MaterialSkinPlus.Controls.MaterialLabel();
@@ -43,13 +44,14 @@
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirProjectoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
             this.pnlMain.SuspendLayout();
             this.pnlCode.SuspendLayout();
             this.pnlConsole.SuspendLayout();
@@ -58,6 +60,7 @@
             this.pnlPMTitle.SuspendLayout();
             this.file.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -84,18 +87,6 @@
             this.pnlCode.Size = new System.Drawing.Size(671, 296);
             this.pnlCode.TabIndex = 0;
             // 
-            // txtCode
-            // 
-            this.txtCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.txtCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCode.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtCode.Location = new System.Drawing.Point(0, 0);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(0);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(671, 296);
-            this.txtCode.TabIndex = 0;
-            // 
             // pnlConsole
             // 
             this.pnlConsole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -110,7 +101,7 @@
             // 
             // pnlConsoleTitle
             // 
-            this.pnlConsoleTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.pnlConsoleTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(92)))));
             this.pnlConsoleTitle.Controls.Add(this.materialLabel1);
             this.pnlConsoleTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlConsoleTitle.Location = new System.Drawing.Point(0, 0);
@@ -157,7 +148,7 @@
             // 
             // pnlPMTitle
             // 
-            this.pnlPMTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
+            this.pnlPMTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(92)))));
             this.pnlPMTitle.Controls.Add(this.lblProjectManager);
             this.pnlPMTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlPMTitle.Location = new System.Drawing.Point(0, 0);
@@ -193,13 +184,13 @@
             // archivoToolStripMenuItem
             // 
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
             // 
             // menuStrip1
@@ -226,6 +217,30 @@
             this.archivoToolStripMenuItem1.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem1.Text = "Archivo";
             // 
+            // abrirToolStripMenuItem1
+            // 
+            this.abrirToolStripMenuItem1.Name = "abrirToolStripMenuItem1";
+            this.abrirToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.abrirToolStripMenuItem1.Text = "Abrir";
+            // 
+            // abrirProjectoToolStripMenuItem
+            // 
+            this.abrirProjectoToolStripMenuItem.Name = "abrirProjectoToolStripMenuItem";
+            this.abrirProjectoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.abrirProjectoToolStripMenuItem.Text = "Abrir Projecto";
+            // 
+            // guardarToolStripMenuItem
+            // 
+            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.guardarToolStripMenuItem.Text = "Guardar";
+            // 
+            // guardarComoToolStripMenuItem
+            // 
+            this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.guardarComoToolStripMenuItem.Text = "Guardar Como";
+            // 
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
@@ -244,29 +259,40 @@
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
-            // abrirToolStripMenuItem1
+            // txtCode
             // 
-            this.abrirToolStripMenuItem1.Name = "abrirToolStripMenuItem1";
-            this.abrirToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.abrirToolStripMenuItem1.Text = "Abrir";
-            // 
-            // abrirProjectoToolStripMenuItem
-            // 
-            this.abrirProjectoToolStripMenuItem.Name = "abrirProjectoToolStripMenuItem";
-            this.abrirProjectoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.abrirProjectoToolStripMenuItem.Text = "Abrir Projecto";
-            // 
-            // guardarToolStripMenuItem
-            // 
-            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.guardarToolStripMenuItem.Text = "Guardar";
-            // 
-            // guardarComoToolStripMenuItem
-            // 
-            this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.guardarComoToolStripMenuItem.Text = "Guardar Como";
+            this.txtCode.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.txtCode.AutoScrollMinSize = new System.Drawing.Size(27, 14);
+            this.txtCode.BackBrush = null;
+            this.txtCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.txtCode.CharHeight = 14;
+            this.txtCode.CharWidth = 8;
+            this.txtCode.CurrentLineColor = System.Drawing.Color.Teal;
+            this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.txtCode.ForeColor = System.Drawing.Color.White;
+            this.txtCode.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.txtCode.IsReplaceMode = false;
+            this.txtCode.Location = new System.Drawing.Point(0, 0);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Paddings = new System.Windows.Forms.Padding(0);
+            this.txtCode.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txtCode.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txtCode.ServiceColors")));
+            this.txtCode.Size = new System.Drawing.Size(671, 296);
+            this.txtCode.TabIndex = 0;
+            this.txtCode.Zoom = 100;
             // 
             // DenebStudio
             // 
@@ -293,6 +319,7 @@
             this.file.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,7 +332,6 @@
         private System.Windows.Forms.Panel pnlConsole;
         private System.Windows.Forms.Panel pnlProjetManager;
         private MaterialSkinPlus.Controls.MaterialContextMenuStrip file;
-        private DenebStudioControls.IndexedTextbox txtCode;
         private System.Windows.Forms.Panel pnlPMTitle;
         private System.Windows.Forms.Panel pnlConsoleTitle;
         private MaterialSkinPlus.Controls.MaterialLabel lblProjectManager;
@@ -322,6 +348,7 @@
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
+        private FastColoredTextBoxNS.FastColoredTextBox txtCode;
     }
 }
 

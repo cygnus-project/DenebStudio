@@ -29,7 +29,11 @@ namespace DenebStudio
         {
             InitializeComponent();
             InitializeMaterialTheme();
-            ListDirectory(trvProjectDirectory, "C:\\Users\\rband\\Documents\\Try\\numberedTextbox_src");
+            ListDirectory(trvProjectDirectory, File.ReadAllText(Application.StartupPath + "\\openedProject.deneb"));
+            if (Program.path != string.Empty)
+            {
+                txtCode.Text = File.ReadAllText(Program.path);
+            }
         }
 
         private void InitializeMaterialTheme()
@@ -37,7 +41,7 @@ namespace DenebStudio
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue800, Primary.Blue900, Primary.Blue500, Accent.LightBlue200, TextShade.WHITE);
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Teal800, Primary.Teal900, Primary.Teal500, Accent.Teal200, TextShade.WHITE);
         }
 
         private void ListDirectory(TreeView treeView, string path)
@@ -85,12 +89,23 @@ namespace DenebStudio
             {
                 if (e.Node.Tag != null)
                 {
+                    Program.path = e.Node.Tag.ToString();
+                    Program.container.Tabs.Add(new EasyTabs.TitleBarTab(Program.container)
+                    {
+                        Content = new DenebStudio
+                        {
+                            Text = GetFileName(e.Node.Tag.ToString()),
+                            Icon = Icon.FromHandle(Properties.Resources.EditIcon.GetHicon())
+                        }
+                    });
                     /*if (tabOpenedFile.TabPages[0].Text == "Empty")
                     {
                         tabOpenedFile.TabPages[0].Text = GetFileName(e.Node.Tag.ToString());
                         //materialTabSelector1.Refresh();
                     }
+                    
                     txtCode.richTextBox1.Text = File.ReadAllText(e.Node.Tag.ToString()); */
+
                 }
             }
         }

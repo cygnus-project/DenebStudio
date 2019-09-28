@@ -14,6 +14,7 @@ namespace DenebStudio
     public partial class AppContainer : TitleBarTabs
     {
         private bool firstTab = true;
+        public string actualPath = string.Empty;
         public AppContainer()
         {
             InitializeComponent();
@@ -29,8 +30,12 @@ namespace DenebStudio
         {
             return new TitleBarTab(this)
             {
-                Content = new DenebStudio { Text = "New Tab", Icon = Icon.FromHandle(Properties.Resources.EditIcon.GetHicon())}
-                
+                Content = new DenebStudio
+                {
+                    Text = "New Tab",
+                    Icon = Icon.FromHandle(Properties.Resources.EditIcon.GetHicon())
+                }
+
             };
         }
 
