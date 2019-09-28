@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DenebStudio));
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlCode = new System.Windows.Forms.Panel();
+            this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
             this.pnlConsole = new System.Windows.Forms.Panel();
             this.pnlConsoleTitle = new System.Windows.Forms.Panel();
             this.materialLabel1 = new MaterialSkinPlus.Controls.MaterialLabel();
@@ -51,16 +52,15 @@
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
             this.pnlMain.SuspendLayout();
             this.pnlCode.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
             this.pnlConsole.SuspendLayout();
             this.pnlConsoleTitle.SuspendLayout();
             this.pnlProjetManager.SuspendLayout();
             this.pnlPMTitle.SuspendLayout();
             this.file.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -86,6 +86,41 @@
             this.pnlCode.Name = "pnlCode";
             this.pnlCode.Size = new System.Drawing.Size(671, 296);
             this.pnlCode.TabIndex = 0;
+            // 
+            // txtCode
+            // 
+            this.txtCode.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.txtCode.AutoScrollMinSize = new System.Drawing.Size(27, 14);
+            this.txtCode.BackBrush = null;
+            this.txtCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.txtCode.CharHeight = 14;
+            this.txtCode.CharWidth = 8;
+            this.txtCode.CurrentLineColor = System.Drawing.Color.Teal;
+            this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCode.ForeColor = System.Drawing.Color.White;
+            this.txtCode.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.txtCode.IsReplaceMode = false;
+            this.txtCode.Location = new System.Drawing.Point(0, 0);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Paddings = new System.Windows.Forms.Padding(0);
+            this.txtCode.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txtCode.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txtCode.ServiceColors")));
+            this.txtCode.Size = new System.Drawing.Size(671, 296);
+            this.txtCode.TabIndex = 0;
+            this.txtCode.Zoom = 100;
+            this.txtCode.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.txtCode_TextChanged);
             // 
             // pnlConsole
             // 
@@ -259,41 +294,6 @@
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
-            // txtCode
-            // 
-            this.txtCode.AutoCompleteBracketsList = new char[] {
-        '(',
-        ')',
-        '{',
-        '}',
-        '[',
-        ']',
-        '\"',
-        '\"',
-        '\'',
-        '\''};
-            this.txtCode.AutoScrollMinSize = new System.Drawing.Size(27, 14);
-            this.txtCode.BackBrush = null;
-            this.txtCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.txtCode.CharHeight = 14;
-            this.txtCode.CharWidth = 8;
-            this.txtCode.CurrentLineColor = System.Drawing.Color.Teal;
-            this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
-            this.txtCode.ForeColor = System.Drawing.Color.White;
-            this.txtCode.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.txtCode.IsReplaceMode = false;
-            this.txtCode.Location = new System.Drawing.Point(0, 0);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Paddings = new System.Windows.Forms.Padding(0);
-            this.txtCode.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtCode.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txtCode.ServiceColors")));
-            this.txtCode.Size = new System.Drawing.Size(671, 296);
-            this.txtCode.TabIndex = 0;
-            this.txtCode.Zoom = 100;
-            // 
             // DenebStudio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,6 +310,7 @@
             this.Text = "Deneb Studio";
             this.pnlMain.ResumeLayout(false);
             this.pnlCode.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).EndInit();
             this.pnlConsole.ResumeLayout(false);
             this.pnlConsoleTitle.ResumeLayout(false);
             this.pnlConsoleTitle.PerformLayout();
@@ -319,7 +320,6 @@
             this.file.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
