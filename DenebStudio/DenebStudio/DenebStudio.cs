@@ -98,6 +98,7 @@ namespace DenebStudio
                             Icon = Icon.FromHandle(Properties.Resources.EditIcon.GetHicon())
                         }
                     });
+                    Program.container.SelectedTabIndex = Program.container.Tabs.Count - 1;
                     /*if (tabOpenedFile.TabPages[0].Text == "Empty")
                     {
                         tabOpenedFile.TabPages[0].Text = GetFileName(e.Node.Tag.ToString());
