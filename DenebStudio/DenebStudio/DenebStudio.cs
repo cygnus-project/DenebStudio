@@ -19,18 +19,16 @@ namespace DenebStudio
     public partial class DenebStudio : MaterialForm
     {
         static SolidBrush keywordBrush = new SolidBrush(Color.FromArgb(92, 204, 226));
+        static SolidBrush classBrush = new SolidBrush(Color.FromArgb(148, 204, 9));
+        static SolidBrush commentBrush = new SolidBrush(Color.FromArgb(212, 203, 101));
 
-        readonly Style BlueBoldStyle = new TextStyle(Brushes.Blue, null, FontStyle.Bold);
         readonly Style KeywordStyle = new TextStyle(keywordBrush, null, FontStyle.Regular);
-        readonly Style ClassNameStyle = new TextStyle(null, null, FontStyle.Bold | FontStyle.Underline);
-        readonly Style StringStyle = new TextStyle(Brushes.Brown, null, FontStyle.Italic);
+        readonly Style ClassNameStyle = new TextStyle(classBrush, null, FontStyle.Bold | FontStyle.Underline);
+        readonly Style StringStyle = new TextStyle(commentBrush, null, FontStyle.Italic);
         readonly Style CommentTagStyle = new TextStyle(Brushes.Gray, null, FontStyle.Regular);
         readonly Style CommentStyle = new TextStyle(Brushes.Green, null, FontStyle.Italic);
         readonly Style AttributeStyle = new TextStyle(Brushes.Green, null, FontStyle.Italic);
         readonly Style NumberStyle = new TextStyle(Brushes.Magenta, null, FontStyle.Regular);
-        readonly Style MaroonStyle = new TextStyle(Brushes.Maroon, null, FontStyle.Regular);
-        readonly Style RedStyle = new TextStyle(Brushes.Red, null, FontStyle.Regular);
-        readonly Style BlackStyle = new TextStyle(Brushes.Black, null, FontStyle.Regular);
 
 
 
@@ -235,9 +233,9 @@ namespace DenebStudio
             }
             Range range = (sender as FastColoredTextBox).Range;
 
-            range.ClearStyle(commentsStyle);
-            range.SetStyle(commentsStyle, @"//.*$", RegexOptions.Multiline);
-            range.SetStyle(typesStyle, @"\b(class|struct|enum)\s+(?<range>[\w_]+?)\b");
+            //range.ClearStyle(commentsStyle);
+            //range.SetStyle(commentsStyle, @"//.*$", RegexOptions.Multiline);
+            //range.SetStyle(typesStyle, @"\b(class|struct|enum)\s+(?<range>[\w_]+?)\b");
 
             range.ClearStyle(commentsStyle);
             //comment highlighting
@@ -275,6 +273,7 @@ namespace DenebStudio
             range.SetStyle(ClassNameStyle, DartClassNameRegex);
             //keyword highlighting
             range.SetStyle(KeywordStyle, DartKeywordRegex);
+
 
             //find document comments
             foreach (Range r in range.GetRanges(@"^\s*///.*$", RegexOptions.Multiline))
