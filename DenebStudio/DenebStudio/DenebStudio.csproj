@@ -105,6 +105,7 @@
     <Compile Include="IndexedTextbox.Designer.cs">
       <DependentUpon>IndexedTextbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListViewExtension.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectSelector.cs">
       <SubType>Form</SubType>
