@@ -20,13 +20,14 @@ namespace DenebStudio
     {
         static SolidBrush keywordBrush = new SolidBrush(Color.FromArgb(92, 204, 226));
         static SolidBrush classBrush = new SolidBrush(Color.FromArgb(148, 204, 9));
-        static SolidBrush commentBrush = new SolidBrush(Color.FromArgb(212, 203, 101));
+        static SolidBrush stringBrush = new SolidBrush(Color.FromArgb(212, 203, 101));
+        static SolidBrush commentBrush = new SolidBrush(Color.FromArgb(90, 179, 144));
 
         readonly Style KeywordStyle = new TextStyle(keywordBrush, null, FontStyle.Regular);
         readonly Style ClassNameStyle = new TextStyle(classBrush, null, FontStyle.Bold | FontStyle.Underline);
-        readonly Style StringStyle = new TextStyle(commentBrush, null, FontStyle.Italic);
+        readonly Style StringStyle = new TextStyle(stringBrush, null, FontStyle.Italic);
         readonly Style CommentTagStyle = new TextStyle(Brushes.Gray, null, FontStyle.Regular);
-        readonly Style CommentStyle = new TextStyle(Brushes.Green, null, FontStyle.Italic);
+        readonly Style CommentStyle = new TextStyle(commentBrush, null, FontStyle.Italic);
         readonly Style AttributeStyle = new TextStyle(Brushes.Green, null, FontStyle.Italic);
         readonly Style NumberStyle = new TextStyle(Brushes.Magenta, null, FontStyle.Regular);
 
@@ -45,12 +46,14 @@ namespace DenebStudio
         {
             InitializeComponent();
             InitializeMaterialTheme();
-            ListDirectory(trvProjectDirectory, File.ReadAllText(Application.StartupPath + "\\openedProject.deneb"));
+            ListDirectory(trvProjectDirectory, File.ReadAllText(Application.StartupPath + "\\OpenedProject.deneb"));
             if (Program.path != string.Empty)
             {
                 txtCode.Text = File.ReadAllText(Program.path);
             }
         }
+
+        
 
         private void InitializeMaterialTheme()
         {
