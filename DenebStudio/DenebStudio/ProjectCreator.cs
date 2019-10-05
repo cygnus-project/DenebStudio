@@ -34,7 +34,16 @@ namespace DenebStudio
 
         private async void btnCreateProject_Click(object sender, EventArgs e)
         {
-            File.WriteAllText(Application.StartupPath + "\\OpenedProject.deneb", Path.Combine(txtProjectPath.Text, txtProjectName.Text));
+            string projectPath = Path.Combine(txtProjectPath.Text, txtProjectName.Text);
+            File.WriteAllText(Application.StartupPath + "\\OpenedProject.deneb", projectPath);
+            prgCreating.Value += 10;
+            await Task.Delay(2000);
+            if (!Directory.Exists(projectPath))
+            {
+                prgCreating.Value += 10;
+                await Task.Delay(2000);
+                Directory.CreateDirectory(projectPath);
+            }
             prgCreating.Value += 10;
             await Task.Delay(2000);
             Program.launch = true;
@@ -42,6 +51,12 @@ namespace DenebStudio
             await Task.Delay(2000);
             prgCreating.Value += 10;
             this.Close();
+        }
+
+        private void txtProjectName_TextChanged(object sender, EventArgs e)
+        {
+            txtProjectName.Text = txtProjectName.Text.ToLower().Replace(" ", "_");
+            txtProjectName.SelectionStart = txtProjectName.Text.Length;
         }
     }
 }

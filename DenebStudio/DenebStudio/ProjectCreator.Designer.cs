@@ -52,6 +52,7 @@
             this.txtProjectName.TabIndex = 0;
             this.txtProjectName.TabStop = false;
             this.txtProjectName.UseSystemPasswordChar = false;
+            this.txtProjectName.TextChanged += new System.EventHandler(this.txtProjectName_TextChanged);
             // 
             // txtProjectPath
             // 
@@ -121,6 +122,7 @@
             this.Controls.Add(this.txtProjectPath);
             this.Controls.Add(this.txtProjectName);
             this.Name = "ProjectCreator";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProjectCreator";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

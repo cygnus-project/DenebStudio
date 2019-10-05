@@ -20,6 +20,19 @@ namespace DenebStudio
             InitializeComponent();
             InitializeMaterialTheme();
             InitializeLists();
+            if (!Directory.Exists($"{Application.StartupPath}\\DenebProjects"))
+            {
+                Directory.CreateDirectory($"{Application.StartupPath}\\DenebProjects");
+            }
+            if (!Directory.Exists($"{Application.StartupPath}\\DenebProjects\\Dart"))
+            {
+                Directory.CreateDirectory($"{Application.StartupPath}\\DenebProjects\\Dart");
+            }
+            if (!Directory.Exists($"{Application.StartupPath}\\DenebProjects\\Flutter"))
+            {
+                Directory.CreateDirectory($"{Application.StartupPath}\\DenebProjects\\Flutter");
+            }
+
             //Program.launch = true;
         }
 

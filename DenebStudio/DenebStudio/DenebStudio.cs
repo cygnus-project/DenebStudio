@@ -46,13 +46,49 @@ namespace DenebStudio
 
         public DenebStudio()
         {
+            string path = File.ReadAllText(Application.StartupPath + "\\OpenedProject.deneb");
             InitializeComponent();
             InitializeMaterialTheme();
-            ListDirectory(trvProjectDirectory, File.ReadAllText(Application.StartupPath + "\\OpenedProject.deneb"));
+            Console();
+            Task.Run(async()=> await ReadConsoleAsync());
+            WriteConsole($"cd {path}");
             if (Program.path != string.Empty)
             {
                 txtCode.Text = File.ReadAllText(Program.path);
             }
+            if (!File.Exists(path + "\\pubspec.yaml"))
+            {
+                if (path.Contains("Dart"))
+                {
+                    WriteConsole($"stagehand console-full");
+                }
+                else if (path.Contains("Flutter"))
+                {
+                    WriteConsole($"cd ..");
+                    Task.Run(async () => await Task.Delay(1000));
+                    WriteConsole($"flutter create {GetFileName(path)}");
+                    bool detected = false;
+                    while (!detected)
+                    {
+                        if (txtConsole.Text.Contains("All done!"))
+                        {
+                            ListDirectory(trvProjectDirectory, path);
+                            txtConsole.Text = string.Empty;
+                            detected = true;
+                        }
+                        Task.Delay(500);
+                    }
+                    
+                }
+
+            }
+            else
+            {
+                ListDirectory(trvProjectDirectory, path);
+            }
+            trvProjectDirectory.Nodes[0].Expand();
+            
+            
         }
 
         private void InitializeMaterialTheme()
@@ -313,26 +349,30 @@ namespace DenebStudio
 
         void Console()
         {
-            cmdOutput = new StringBuilder("");
-            cmdProcess = new Process();
+            try
+            {
+                cmdOutput = new StringBuilder("");
+                cmdProcess = new Process();
 
-            cmdProcess.StartInfo.FileName = "cmd.exe";
-            cmdProcess.StartInfo.UseShellExecute = false;
-            cmdProcess.StartInfo.CreateNoWindow = true;
-            cmdProcess.StartInfo.RedirectStandardOutput = true;
-            
+                cmdProcess.StartInfo.FileName = "cmd.exe";
+                cmdProcess.StartInfo.UseShellExecute = false;
+                cmdProcess.StartInfo.CreateNoWindow = true;
+                cmdProcess.StartInfo.RedirectStandardOutput = true;
 
-            cmdProcess.OutputDataReceived += new DataReceivedEventHandler(SortOutputHandler);
-            cmdProcess.StartInfo.RedirectStandardInput = true;
-            cmdProcess.Start();
 
-            cmdStreamWriter = cmdProcess.StandardInput;
-            cmdProcess.BeginOutputReadLine();
+                cmdProcess.OutputDataReceived += new DataReceivedEventHandler(SortOutputHandler);
+                cmdProcess.StartInfo.RedirectStandardInput = true;
+                cmdProcess.Start();
+
+                cmdStreamWriter = cmdProcess.StandardInput;
+                cmdProcess.BeginOutputReadLine();
+            }
+            catch { }
         }
 
-        void WriteConsole()
+        void WriteConsole(string command)
         {
-            cmdStreamWriter.WriteLine("flutter doctor");
+            cmdStreamWriter.WriteLine(command);
         }
 
         private static void SortOutputHandler(object sendingProcess,
@@ -359,13 +399,12 @@ namespace DenebStudio
         
         private async void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Console();
             await Task.Run(async () => await ReadConsoleAsync());
         }
 
         private void guardarComoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WriteConsole();
+            //WriteConsole();
         }
     }
 }
