@@ -15,6 +15,7 @@ using FastColoredTextBoxNS;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace DenebStudio
 {
@@ -43,10 +44,38 @@ namespace DenebStudio
             }
         }
 
+        bool GetExistingProject(List<WorkedProject> list, string name)
+        {
+            foreach (WorkedProject item in list)
+            {
+                if (item.Name == name)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public DenebStudio()
         {
+            List<WorkedProject> workedProjectList = new List<WorkedProject>();
             string path = File.ReadAllText(Application.StartupPath + "\\OpenedProject.deneb");
+            if (!File.Exists(Application.StartupPath + "\\WorkedProjects.deneb"))
+            {
+                workedProjectList.Add(new WorkedProject { Name = GetFileName(path), Path = path });
+                File.WriteAllText(Application.StartupPath + "\\WorkedProjects.deneb", JsonConvert.SerializeObject(workedProjectList));
+            }
+            else
+            {
+                workedProjectList = JsonConvert.DeserializeObject<List<WorkedProject>>(File.ReadAllText(Application.StartupPath + "\\WorkedProjects.deneb"));
+                if (!GetExistingProject(workedProjectList, GetFileName(path)))
+                {
+                    workedProjectList.Add(new WorkedProject { Name = GetFileName(path), Path = path });
+                    File.WriteAllText(Application.StartupPath + "\\WorkedProjects.deneb", JsonConvert.SerializeObject(workedProjectList));
+                }
+                
+            }
+            
             InitializeComponent();
             InitializeMaterialTheme();
             Console();
@@ -56,11 +85,24 @@ namespace DenebStudio
             {
                 txtCode.Text = File.ReadAllText(Program.path);
             }
-            if (!File.Exists(path + "\\pubspec.yaml"))
+
+            
+            if (!File.Exists(Path.Combine(path, "pubspec.yaml")))
             {
                 if (path.Contains("Dart"))
                 {
                     WriteConsole($"stagehand console-full");
+                    bool detected = false;
+                    while (!detected)
+                    {
+                        if (File.Exists(Path.Combine(path, "pubspec.yaml")))
+                        {
+                            ListDirectory(trvProjectDirectory, path);
+                            detected = true;
+                            txtConsole.Text = string.Empty;
+                        }
+                        Task.Delay(500);
+                    }
                 }
                 else if (path.Contains("Flutter"))
                 {
@@ -407,4 +449,6 @@ namespace DenebStudio
             //WriteConsole();
         }
     }
+
+    
 }
