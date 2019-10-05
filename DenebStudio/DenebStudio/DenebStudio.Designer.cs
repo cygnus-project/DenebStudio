@@ -52,6 +52,7 @@
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtConsole = new System.Windows.Forms.RichTextBox();
             this.pnlMain.SuspendLayout();
             this.pnlCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
@@ -109,6 +110,7 @@
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txtCode.ForeColor = System.Drawing.Color.White;
             this.txtCode.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtCode.IsReplaceMode = false;
@@ -126,6 +128,7 @@
             // 
             this.pnlConsole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.pnlConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlConsole.Controls.Add(this.txtConsole);
             this.pnlConsole.Controls.Add(this.pnlConsoleTitle);
             this.pnlConsole.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlConsole.Location = new System.Drawing.Point(243, 296);
@@ -156,6 +159,7 @@
             this.materialLabel1.Size = new System.Drawing.Size(65, 19);
             this.materialLabel1.TabIndex = 1;
             this.materialLabel1.Text = "Consola";
+            this.materialLabel1.Click += new System.EventHandler(this.materialLabel1_Click);
             // 
             // pnlProjetManager
             // 
@@ -255,26 +259,28 @@
             // abrirToolStripMenuItem1
             // 
             this.abrirToolStripMenuItem1.Name = "abrirToolStripMenuItem1";
-            this.abrirToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.abrirToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.abrirToolStripMenuItem1.Text = "Abrir";
             // 
             // abrirProjectoToolStripMenuItem
             // 
             this.abrirProjectoToolStripMenuItem.Name = "abrirProjectoToolStripMenuItem";
-            this.abrirProjectoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.abrirProjectoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.abrirProjectoToolStripMenuItem.Text = "Abrir Projecto";
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // guardarComoToolStripMenuItem
             // 
             this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.guardarComoToolStripMenuItem.Text = "Guardar Como";
+            this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.guardarComoToolStripMenuItem_Click);
             // 
             // editarToolStripMenuItem
             // 
@@ -293,6 +299,14 @@
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.opcionesToolStripMenuItem.Text = "Opciones";
+            // 
+            // txtConsole
+            // 
+            this.txtConsole.Location = new System.Drawing.Point(5, 32);
+            this.txtConsole.Name = "txtConsole";
+            this.txtConsole.Size = new System.Drawing.Size(654, 149);
+            this.txtConsole.TabIndex = 1;
+            this.txtConsole.Text = "";
             // 
             // DenebStudio
             // 
@@ -349,6 +363,7 @@
         private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
         private FastColoredTextBoxNS.FastColoredTextBox txtCode;
+        private System.Windows.Forms.RichTextBox txtConsole;
     }
 }
 

@@ -61,6 +61,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -107,6 +108,12 @@
     </Compile>
     <Compile Include="ListViewExtension.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectCreator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectCreator.Designer.cs">
+      <DependentUpon>ProjectCreator.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectSelector.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IndexedTextbox.resx">
       <DependentUpon>IndexedTextbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectCreator.resx">
+      <DependentUpon>ProjectCreator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectSelector.resx">
       <DependentUpon>ProjectSelector.cs</DependentUpon>

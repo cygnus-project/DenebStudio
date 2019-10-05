@@ -35,15 +35,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.listRecent = new System.Windows.Forms.ListView();
             this.imgList = new System.Windows.Forms.ImageList(this.components);
+            this.materialLabel1 = new MaterialSkinPlus.Controls.MaterialLabel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCreateProject = new MaterialSkinPlus.Controls.MaterialRaisedButton();
             this.listCreate = new System.Windows.Forms.ListView();
             this.materialLabel3 = new MaterialSkinPlus.Controls.MaterialLabel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.materialRaisedButton2 = new MaterialSkinPlus.Controls.MaterialRaisedButton();
-            this.materialLabel1 = new MaterialSkinPlus.Controls.MaterialLabel();
+            this.pnlSelector = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnlSelector.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialRaisedButton1
@@ -109,9 +109,22 @@
             this.imgList.Images.SetKeyName(0, "DartLogoB.png");
             this.imgList.Images.SetKeyName(1, "FlutterLogo.png");
             // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(68, 229);
+            this.materialLabel1.MouseState = MaterialSkinPlus.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(271, 19);
+            this.materialLabel1.TabIndex = 4;
+            this.materialLabel1.Text = "No se encontraron proyectos recientes";
+            // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.materialRaisedButton2);
+            this.panel2.Controls.Add(this.btnCreateProject);
             this.panel2.Controls.Add(this.listCreate);
             this.panel2.Controls.Add(this.materialLabel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -119,6 +132,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(412, 477);
             this.panel2.TabIndex = 4;
+            // 
+            // btnCreateProject
+            // 
+            this.btnCreateProject.AutoSize = true;
+            this.btnCreateProject.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCreateProject.Depth = 0;
+            this.btnCreateProject.Icon = null;
+            this.btnCreateProject.Location = new System.Drawing.Point(269, 431);
+            this.btnCreateProject.MouseState = MaterialSkinPlus.MouseState.HOVER;
+            this.btnCreateProject.Name = "btnCreateProject";
+            this.btnCreateProject.Primary = true;
+            this.btnCreateProject.Size = new System.Drawing.Size(137, 36);
+            this.btnCreateProject.TabIndex = 4;
+            this.btnCreateProject.Text = "Crear Proyecto";
+            this.btnCreateProject.UseVisualStyleBackColor = true;
+            this.btnCreateProject.Click += new System.EventHandler(this.btnCreateProject_Click);
             // 
             // listCreate
             // 
@@ -148,52 +177,24 @@
             this.materialLabel3.TabIndex = 2;
             this.materialLabel3.Text = "Seleccionar Proyecto";
             // 
-            // panel3
+            // pnlSelector
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pnlSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.panel2);
-            this.panel3.Controls.Add(this.panel1);
-            this.panel3.Location = new System.Drawing.Point(1, 64);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(824, 477);
-            this.panel3.TabIndex = 5;
-            // 
-            // materialRaisedButton2
-            // 
-            this.materialRaisedButton2.AutoSize = true;
-            this.materialRaisedButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton2.Depth = 0;
-            this.materialRaisedButton2.Icon = null;
-            this.materialRaisedButton2.Location = new System.Drawing.Point(269, 431);
-            this.materialRaisedButton2.MouseState = MaterialSkinPlus.MouseState.HOVER;
-            this.materialRaisedButton2.Name = "materialRaisedButton2";
-            this.materialRaisedButton2.Primary = true;
-            this.materialRaisedButton2.Size = new System.Drawing.Size(137, 36);
-            this.materialRaisedButton2.TabIndex = 4;
-            this.materialRaisedButton2.Text = "Crear Proyecto";
-            this.materialRaisedButton2.UseVisualStyleBackColor = true;
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(68, 229);
-            this.materialLabel1.MouseState = MaterialSkinPlus.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(271, 19);
-            this.materialLabel1.TabIndex = 4;
-            this.materialLabel1.Text = "No se encontraron proyectos recientes";
+            this.pnlSelector.Controls.Add(this.panel2);
+            this.pnlSelector.Controls.Add(this.panel1);
+            this.pnlSelector.Location = new System.Drawing.Point(1, 64);
+            this.pnlSelector.Name = "pnlSelector";
+            this.pnlSelector.Size = new System.Drawing.Size(824, 477);
+            this.pnlSelector.TabIndex = 5;
             // 
             // ProjectSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(827, 543);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.pnlSelector);
             this.MaximizeBox = false;
             this.Name = "ProjectSelector";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -202,7 +203,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
+            this.pnlSelector.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -213,11 +214,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private MaterialSkinPlus.Controls.MaterialLabel materialLabel3;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlSelector;
         private System.Windows.Forms.ImageList imgList;
         private System.Windows.Forms.ListView listRecent;
         private System.Windows.Forms.ListView listCreate;
-        private MaterialSkinPlus.Controls.MaterialRaisedButton materialRaisedButton2;
+        private MaterialSkinPlus.Controls.MaterialRaisedButton btnCreateProject;
         private MaterialSkinPlus.Controls.MaterialLabel materialLabel1;
     }
 }

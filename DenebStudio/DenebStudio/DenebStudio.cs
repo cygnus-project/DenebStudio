@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using EasyTabs;
 using FastColoredTextBoxNS;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
+using System.Web;
 
 namespace DenebStudio
 {
@@ -53,10 +55,9 @@ namespace DenebStudio
             }
         }
 
-        
-
         private void InitializeMaterialTheme()
         {
+            CheckForIllegalCrossThreadCalls = false;
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -304,6 +305,67 @@ namespace DenebStudio
 
 
 
+        }
+
+        private static StringBuilder cmdOutput = null;
+        Process cmdProcess;
+        StreamWriter cmdStreamWriter;
+
+        void Console()
+        {
+            cmdOutput = new StringBuilder("");
+            cmdProcess = new Process();
+
+            cmdProcess.StartInfo.FileName = "cmd.exe";
+            cmdProcess.StartInfo.UseShellExecute = false;
+            cmdProcess.StartInfo.CreateNoWindow = true;
+            cmdProcess.StartInfo.RedirectStandardOutput = true;
+            
+
+            cmdProcess.OutputDataReceived += new DataReceivedEventHandler(SortOutputHandler);
+            cmdProcess.StartInfo.RedirectStandardInput = true;
+            cmdProcess.Start();
+
+            cmdStreamWriter = cmdProcess.StandardInput;
+            cmdProcess.BeginOutputReadLine();
+        }
+
+        void WriteConsole()
+        {
+            cmdStreamWriter.WriteLine("flutter doctor");
+        }
+
+        private static void SortOutputHandler(object sendingProcess,
+            DataReceivedEventArgs outLine)
+        {
+            if (!String.IsNullOrEmpty(outLine.Data))
+            {
+                cmdOutput.Append(Environment.NewLine + HttpUtility.HtmlEncode(outLine.Data));
+            }
+        }
+
+        private void materialLabel1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        async Task ReadConsoleAsync()
+        {
+            txtConsole.Text = cmdOutput.ToString();
+            await Task.Delay(1500);
+            await ReadConsoleAsync();
+        }
+
+        
+        private async void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Console();
+            await Task.Run(async () => await ReadConsoleAsync());
+        }
+
+        private void guardarComoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WriteConsole();
         }
     }
 }

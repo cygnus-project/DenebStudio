@@ -20,7 +20,7 @@ namespace DenebStudio
             InitializeComponent();
             InitializeMaterialTheme();
             InitializeLists();
-            Program.launch = true;
+            //Program.launch = true;
         }
 
         void InitializeLists()
@@ -91,5 +91,65 @@ namespace DenebStudio
             }
             this.Close();
         }
+
+        private async void btnCreateProject_Click(object sender, EventArgs e)
+        {
+            ProjectCreator projectCreator = null;
+            if (listCreate.SelectedItems[0].Index == 0)
+            {
+                projectCreator = new ProjectCreator("Dart");
+            }
+            else if (listCreate.SelectedItems[0].Index == 1)
+            {
+                projectCreator = new ProjectCreator("Dart");
+            }
+            else if (listCreate.SelectedItems[0].Index == 2)
+            {
+                projectCreator = new ProjectCreator("Dart");
+            }
+            else if (listCreate.SelectedItems[0].Index == 3)
+            {
+                projectCreator = new ProjectCreator("Dart");
+            }
+            else if (listCreate.SelectedItems[0].Index == 4)
+            {
+                projectCreator = new ProjectCreator("Dart");
+            }
+            else if (listCreate.SelectedItems[0].Index == 5)
+            {
+                projectCreator = new ProjectCreator("Dart");
+            }
+            else if (listCreate.SelectedItems[0].Index == 6)
+            {
+                projectCreator = new ProjectCreator("Dart");
+            }
+            else if (listCreate.SelectedItems[0].Index == 7)
+            {
+                projectCreator = new ProjectCreator("Flutter");
+            }
+            else if (listCreate.SelectedItems[0].Index == 8)
+            {
+                projectCreator = new ProjectCreator("Flutter");
+            }
+            else if (listCreate.SelectedItems[0].Index == 9)
+            {
+                projectCreator = new ProjectCreator("Flutter");
+            }
+            else if (listCreate.SelectedItems[0].Index == 10)
+            {
+                projectCreator = new ProjectCreator("Flutter");
+            }
+
+            if (projectCreator != null)
+            {
+                projectCreator.ShowDialog();
+                await Task.Delay(2000);
+                this.Close();
+            }
+            
+
+        }
+
+
     }
 }

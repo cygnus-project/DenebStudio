@@ -24,6 +24,7 @@ namespace DenebStudio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ProjectSelector());
+            //Application.Run(new ProjectCreator());
             container = new AppContainer();
             if (launch)
             {
