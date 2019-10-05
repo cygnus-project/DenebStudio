@@ -59,8 +59,12 @@
     <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EasyTabs.1.3.3.0\lib\net40\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -105,7 +109,14 @@
     <Compile Include="IndexedTextbox.Designer.cs">
       <DependentUpon>IndexedTextbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListViewExtension.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectCreator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectCreator.Designer.cs">
+      <DependentUpon>ProjectCreator.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectSelector.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,11 +124,15 @@
       <DependentUpon>ProjectSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkedProject.cs" />
     <EmbeddedResource Include="DenebStudio.resx">
       <DependentUpon>DenebStudio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IndexedTextbox.resx">
       <DependentUpon>IndexedTextbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectCreator.resx">
+      <DependentUpon>ProjectCreator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectSelector.resx">
       <DependentUpon>ProjectSelector.cs</DependentUpon>

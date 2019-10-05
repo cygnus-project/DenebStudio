@@ -12,7 +12,7 @@ namespace DenebStudio
     {
         public static AppContainer container;
         public static string path = string.Empty;
-        public static bool firstLaunch = true;
+        public static bool launch = false;
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
@@ -21,23 +21,28 @@ namespace DenebStudio
         
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ProjectSelector());
-
+            //Application.Run(new ProjectCreator());
             container = new AppContainer();
-            container.Tabs.Add(new EasyTabs.TitleBarTab(container)
+            if (launch)
             {
-                Content = new DenebStudio
+                
+                container.Tabs.Add(new EasyTabs.TitleBarTab(container)
                 {
-                    Text = "Deneb Studio",
-                    Icon = Icon.FromHandle(Properties.Resources.EditIcon.GetHicon())
-                }
-            });
-            container.SelectedTabIndex = 0;
-            TitleBarTabsApplicationContext applicationContext = new TitleBarTabsApplicationContext();
-            applicationContext.Start(container);
-            Application.Run(applicationContext);
+                    Content = new DenebStudio
+                    {
+                        Text = "Deneb Studio",
+                        Icon = Icon.FromHandle(Properties.Resources.EditIcon.GetHicon())
+                    }
+                });
+                container.SelectedTabIndex = 0;
+                TitleBarTabsApplicationContext applicationContext = new TitleBarTabsApplicationContext();
+                applicationContext.Start(container);
+                Application.Run(applicationContext); 
+            }
 
         }
 

@@ -13,6 +13,9 @@ using System.Windows.Forms;
 using EasyTabs;
 using FastColoredTextBoxNS;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
+using System.Web;
+using Newtonsoft.Json;
 
 namespace DenebStudio
 {
@@ -20,13 +23,14 @@ namespace DenebStudio
     {
         static SolidBrush keywordBrush = new SolidBrush(Color.FromArgb(92, 204, 226));
         static SolidBrush classBrush = new SolidBrush(Color.FromArgb(148, 204, 9));
-        static SolidBrush commentBrush = new SolidBrush(Color.FromArgb(212, 203, 101));
+        static SolidBrush stringBrush = new SolidBrush(Color.FromArgb(212, 203, 101));
+        static SolidBrush commentBrush = new SolidBrush(Color.FromArgb(90, 179, 144));
 
         readonly Style KeywordStyle = new TextStyle(keywordBrush, null, FontStyle.Regular);
         readonly Style ClassNameStyle = new TextStyle(classBrush, null, FontStyle.Bold | FontStyle.Underline);
-        readonly Style StringStyle = new TextStyle(commentBrush, null, FontStyle.Italic);
+        readonly Style StringStyle = new TextStyle(stringBrush, null, FontStyle.Italic);
         readonly Style CommentTagStyle = new TextStyle(Brushes.Gray, null, FontStyle.Regular);
-        readonly Style CommentStyle = new TextStyle(Brushes.Green, null, FontStyle.Italic);
+        readonly Style CommentStyle = new TextStyle(commentBrush, null, FontStyle.Italic);
         readonly Style AttributeStyle = new TextStyle(Brushes.Green, null, FontStyle.Italic);
         readonly Style NumberStyle = new TextStyle(Brushes.Magenta, null, FontStyle.Regular);
 
@@ -40,20 +44,98 @@ namespace DenebStudio
             }
         }
 
+        bool GetExistingProject(List<WorkedProject> list, string name)
+        {
+            foreach (WorkedProject item in list)
+            {
+                if (item.Name == name)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public DenebStudio()
         {
+            List<WorkedProject> workedProjectList = new List<WorkedProject>();
+            string path = File.ReadAllText(Application.StartupPath + "\\OpenedProject.deneb");
+            if (!File.Exists(Application.StartupPath + "\\WorkedProjects.deneb"))
+            {
+                workedProjectList.Add(new WorkedProject { Name = GetFileName(path), Path = path });
+                File.WriteAllText(Application.StartupPath + "\\WorkedProjects.deneb", JsonConvert.SerializeObject(workedProjectList));
+            }
+            else
+            {
+                workedProjectList = JsonConvert.DeserializeObject<List<WorkedProject>>(File.ReadAllText(Application.StartupPath + "\\WorkedProjects.deneb"));
+                if (!GetExistingProject(workedProjectList, GetFileName(path)))
+                {
+                    workedProjectList.Add(new WorkedProject { Name = GetFileName(path), Path = path });
+                    File.WriteAllText(Application.StartupPath + "\\WorkedProjects.deneb", JsonConvert.SerializeObject(workedProjectList));
+                }
+                
+            }
+            
             InitializeComponent();
             InitializeMaterialTheme();
-            ListDirectory(trvProjectDirectory, File.ReadAllText(Application.StartupPath + "\\openedProject.deneb"));
+            Console();
+            Task.Run(async()=> await ReadConsoleAsync());
+            WriteConsole($"cd {path}");
             if (Program.path != string.Empty)
             {
                 txtCode.Text = File.ReadAllText(Program.path);
             }
+
+            
+            if (!File.Exists(Path.Combine(path, "pubspec.yaml")))
+            {
+                if (path.Contains("Dart"))
+                {
+                    WriteConsole($"stagehand console-full");
+                    bool detected = false;
+                    while (!detected)
+                    {
+                        if (File.Exists(Path.Combine(path, "pubspec.yaml")))
+                        {
+                            ListDirectory(trvProjectDirectory, path);
+                            detected = true;
+                            txtConsole.Text = string.Empty;
+                        }
+                        Task.Delay(500);
+                    }
+                }
+                else if (path.Contains("Flutter"))
+                {
+                    WriteConsole($"cd ..");
+                    Task.Run(async () => await Task.Delay(1000));
+                    WriteConsole($"flutter create {GetFileName(path)}");
+                    bool detected = false;
+                    while (!detected)
+                    {
+                        if (txtConsole.Text.Contains("All done!"))
+                        {
+                            ListDirectory(trvProjectDirectory, path);
+                            txtConsole.Text = string.Empty;
+                            detected = true;
+                        }
+                        Task.Delay(500);
+                    }
+                    
+                }
+
+            }
+            else
+            {
+                ListDirectory(trvProjectDirectory, path);
+            }
+            trvProjectDirectory.Nodes[0].Expand();
+            
+            
         }
 
         private void InitializeMaterialTheme()
         {
+            CheckForIllegalCrossThreadCalls = false;
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -302,5 +384,71 @@ namespace DenebStudio
 
 
         }
+
+        private static StringBuilder cmdOutput = null;
+        Process cmdProcess;
+        StreamWriter cmdStreamWriter;
+
+        void Console()
+        {
+            try
+            {
+                cmdOutput = new StringBuilder("");
+                cmdProcess = new Process();
+
+                cmdProcess.StartInfo.FileName = "cmd.exe";
+                cmdProcess.StartInfo.UseShellExecute = false;
+                cmdProcess.StartInfo.CreateNoWindow = true;
+                cmdProcess.StartInfo.RedirectStandardOutput = true;
+
+
+                cmdProcess.OutputDataReceived += new DataReceivedEventHandler(SortOutputHandler);
+                cmdProcess.StartInfo.RedirectStandardInput = true;
+                cmdProcess.Start();
+
+                cmdStreamWriter = cmdProcess.StandardInput;
+                cmdProcess.BeginOutputReadLine();
+            }
+            catch { }
+        }
+
+        void WriteConsole(string command)
+        {
+            cmdStreamWriter.WriteLine(command);
+        }
+
+        private static void SortOutputHandler(object sendingProcess,
+            DataReceivedEventArgs outLine)
+        {
+            if (!String.IsNullOrEmpty(outLine.Data))
+            {
+                cmdOutput.Append(Environment.NewLine + HttpUtility.HtmlEncode(outLine.Data));
+            }
+        }
+
+        private void materialLabel1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        async Task ReadConsoleAsync()
+        {
+            txtConsole.Text = cmdOutput.ToString();
+            await Task.Delay(1500);
+            await ReadConsoleAsync();
+        }
+
+        
+        private async void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            await Task.Run(async () => await ReadConsoleAsync());
+        }
+
+        private void guardarComoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //WriteConsole();
+        }
     }
+
+    
 }
