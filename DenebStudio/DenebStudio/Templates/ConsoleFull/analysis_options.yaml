@@ -1,0 +1,14 @@
+# Defines a default set of lint rules enforced for
+# projects at Google. For details and rationale,
+# see https://github/dart-lang/pedantic#enable-lints.
+include: package:pedantic/analysis_options.yaml
+
+# For limit rules and documentation, see https://dart-lang.github.io/linter/lints
+# Uncomment to specify additional rules.
+# linter:
+#   rules:
+#     - camel_case_types
+
+analyzer:
+# exclude:
+#   - path/to/excluded/files/**
