@@ -109,7 +109,7 @@
             this.prgCreating.Size = new System.Drawing.Size(525, 5);
             this.prgCreating.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.prgCreating.TabIndex = 4;
-            this.prgCreating.Value = 5;
+            this.prgCreating.Value = 10;
             // 
             // ProjectCreator
             // 

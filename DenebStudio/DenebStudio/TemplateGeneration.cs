@@ -53,15 +53,13 @@ namespace DenebStudio
             }
         }
 
-        public void GenerateFile(string file, string content)
+        private void GenerateFile(string file, string content)
         {
-            if (!File.Exists($"{Path}\\{file}"))
+            if (!File.Exists($"{Path}\\{ProjectName}\\{file}"))
             {
                 // Create a file to write to.
-                using (StreamWriter sw = File.CreateText($"{Path}\\{file}"))
-                {
-                    sw.Write(content);
-                }
+
+                File.WriteAllText($"{Path}\\{ProjectName}\\{file}", content);
             }
         }
 
@@ -69,6 +67,7 @@ namespace DenebStudio
 
     public enum ProjectType
     {
-        ConsoleFull = 0
+        ConsoleFull = 0,
+        FlutterApp = 1
     }
 }
