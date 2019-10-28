@@ -16,12 +16,19 @@ namespace DenebStudio
     public partial class ProjectCreator : MaterialForm
     {
         private string prjType = string.Empty;
-        public ProjectCreator(string ProjectType)
+        private ProjectType actualType;
+        TemplateGeneration template = new TemplateGeneration();
+        public ProjectCreator(ProjectType projectType)
         {
+            actualType = projectType;
             InitializeComponent();
             InitializeMaterialTheme();
-            prjType = ProjectType;
-            txtProjectPath.Text = Application.StartupPath + "\\DenebProjects\\" + ProjectType + "\\";
+            if (actualType == ProjectType.ConsoleFull)
+            {
+                prjType = "Dart";
+                txtProjectPath.Text = Application.StartupPath + "\\DenebProjects\\" + prjType + "\\";
+            }
+            
         }
 
         private void InitializeMaterialTheme()
@@ -36,20 +43,26 @@ namespace DenebStudio
         {
             string projectPath = Path.Combine(txtProjectPath.Text, txtProjectName.Text);
             File.WriteAllText(Application.StartupPath + "\\OpenedProject.deneb", projectPath);
-            prgCreating.Value += 10;
+            prgCreating.Value += 10; // 20
             await Task.Delay(2000);
             if (!Directory.Exists(projectPath))
             {
-                prgCreating.Value += 10;
+                prgCreating.Value += 10; // 30
                 await Task.Delay(2000);
                 Directory.CreateDirectory(projectPath);
+                Directory.CreateDirectory($"{projectPath}\\bin");
+                Directory.CreateDirectory($"{projectPath}\\lib");
             }
-            prgCreating.Value += 10;
+            template.Path = txtProjectPath.Text;
+            template.ProjectName = txtProjectName.Text;
+            prgCreating.Value += 10;//40
+            template.GenerateProject(actualType);
             await Task.Delay(2000);
             Program.launch = true;
-            prgCreating.Value += 10;
+
+            prgCreating.Value += 50;//90
             await Task.Delay(2000);
-            prgCreating.Value += 10;
+            prgCreating.Value += 10; //100
             this.Close();
         }
 

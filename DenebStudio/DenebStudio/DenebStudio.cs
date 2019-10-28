@@ -78,16 +78,16 @@ namespace DenebStudio
             
             InitializeComponent();
             InitializeMaterialTheme();
-            Console();
-            Task.Run(async()=> await ReadConsoleAsync());
-            WriteConsole($"cd {path}");
+            //Console();
+            //Task.Run(async()=> await ReadConsoleAsync());
+            //WriteConsole($"cd {path}");
             if (Program.path != string.Empty)
             {
                 txtCode.Text = File.ReadAllText(Program.path);
             }
 
             
-            if (!File.Exists(Path.Combine(path, "pubspec.yaml")))
+            /*if (!File.Exists(Path.Combine(path, "pubspec.yaml")))
             {
                 if (path.Contains("Dart"))
                 {
@@ -125,9 +125,9 @@ namespace DenebStudio
 
             }
             else
-            {
-                ListDirectory(trvProjectDirectory, path);
-            }
+            {*/
+            ListDirectory(trvProjectDirectory, path);
+            //}
             trvProjectDirectory.Nodes[0].Expand();
             
             

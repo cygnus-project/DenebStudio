@@ -124,6 +124,7 @@
       <DependentUpon>ProjectSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplateGeneration.cs" />
     <Compile Include="WorkedProject.cs" />
     <EmbeddedResource Include="DenebStudio.resx">
       <DependentUpon>DenebStudio.cs</DependentUpon>
@@ -165,5 +166,6 @@
     <Content Include="MetroFramework.txt" />
     <None Include="Resources\EditIcon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
