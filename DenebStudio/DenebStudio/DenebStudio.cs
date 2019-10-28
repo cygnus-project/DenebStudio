@@ -16,6 +16,8 @@ using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Web;
 using Newtonsoft.Json;
+using System.Drawing.Text;
+using System.Runtime.InteropServices;
 
 namespace DenebStudio
 {
@@ -78,6 +80,8 @@ namespace DenebStudio
             
             InitializeComponent();
             InitializeMaterialTheme();
+
+            txtCode.Font = new Font(LoadFont(Properties.Resources.Inconsolata_Regular), 12f);
             //Console();
             //Task.Run(async()=> await ReadConsoleAsync());
             //WriteConsole($"cd {path}");
@@ -448,7 +452,28 @@ namespace DenebStudio
         {
             //WriteConsole();
         }
+
+        #region Fuente
+        private readonly PrivateFontCollection privateFontCollection = new PrivateFontCollection();
+
+        [DllImport("gdi32.dll")]
+        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pvd, [In] ref uint pcFonts);
+
+        private FontFamily LoadFont(byte[] fontResource)
+        {
+            int dataLength = fontResource.Length;
+            IntPtr fontPtr = Marshal.AllocCoTaskMem(dataLength);
+            Marshal.Copy(fontResource, 0, fontPtr, dataLength);
+
+            uint cFonts = 0;
+            AddFontMemResourceEx(fontPtr, (uint)fontResource.Length, IntPtr.Zero, ref cFonts);
+            privateFontCollection.AddMemoryFont(fontPtr, dataLength);
+
+            return privateFontCollection.Families.Last();
+        }
+
+        #endregion
     }
 
-    
+
 }

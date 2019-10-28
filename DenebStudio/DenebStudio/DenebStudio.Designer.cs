@@ -34,6 +34,7 @@
             this.pnlCode = new System.Windows.Forms.Panel();
             this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
             this.pnlConsole = new System.Windows.Forms.Panel();
+            this.txtConsole = new System.Windows.Forms.RichTextBox();
             this.pnlConsoleTitle = new System.Windows.Forms.Panel();
             this.materialLabel1 = new MaterialSkinPlus.Controls.MaterialLabel();
             this.pnlProjetManager = new System.Windows.Forms.Panel();
@@ -52,7 +53,6 @@
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtConsole = new System.Windows.Forms.RichTextBox();
             this.pnlMain.SuspendLayout();
             this.pnlCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
@@ -101,16 +101,16 @@
         '\"',
         '\'',
         '\''};
-            this.txtCode.AutoScrollMinSize = new System.Drawing.Size(27, 14);
+            this.txtCode.AutoScrollMinSize = new System.Drawing.Size(29, 16);
             this.txtCode.BackBrush = null;
             this.txtCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.txtCode.CharHeight = 14;
-            this.txtCode.CharWidth = 8;
+            this.txtCode.CharHeight = 16;
+            this.txtCode.CharWidth = 9;
             this.txtCode.CurrentLineColor = System.Drawing.Color.Teal;
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.txtCode.Font = new System.Drawing.Font("Courier New", 11.25F);
             this.txtCode.ForeColor = System.Drawing.Color.White;
             this.txtCode.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtCode.IsReplaceMode = false;
@@ -136,6 +136,14 @@
             this.pnlConsole.Name = "pnlConsole";
             this.pnlConsole.Size = new System.Drawing.Size(671, 193);
             this.pnlConsole.TabIndex = 0;
+            // 
+            // txtConsole
+            // 
+            this.txtConsole.Location = new System.Drawing.Point(5, 32);
+            this.txtConsole.Name = "txtConsole";
+            this.txtConsole.Size = new System.Drawing.Size(654, 149);
+            this.txtConsole.TabIndex = 1;
+            this.txtConsole.Text = "";
             // 
             // pnlConsoleTitle
             // 
@@ -259,26 +267,26 @@
             // abrirToolStripMenuItem1
             // 
             this.abrirToolStripMenuItem1.Name = "abrirToolStripMenuItem1";
-            this.abrirToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.abrirToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.abrirToolStripMenuItem1.Text = "Abrir";
             // 
             // abrirProjectoToolStripMenuItem
             // 
             this.abrirProjectoToolStripMenuItem.Name = "abrirProjectoToolStripMenuItem";
-            this.abrirProjectoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abrirProjectoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.abrirProjectoToolStripMenuItem.Text = "Abrir Projecto";
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // guardarComoToolStripMenuItem
             // 
             this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.guardarComoToolStripMenuItem.Text = "Guardar Como";
             this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.guardarComoToolStripMenuItem_Click);
             // 
@@ -299,14 +307,6 @@
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.opcionesToolStripMenuItem.Text = "Opciones";
-            // 
-            // txtConsole
-            // 
-            this.txtConsole.Location = new System.Drawing.Point(5, 32);
-            this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(654, 149);
-            this.txtConsole.TabIndex = 1;
-            this.txtConsole.Text = "";
             // 
             // DenebStudio
             // 

@@ -38,7 +38,7 @@ namespace DenebStudio
         public void GenerateProject(ProjectType projectType)
         {
             string CONSOLE_FULL_BIN = "import 'package:" + ProjectName +
-                "/'" + ProjectName + ".dart'"+ " as project_name;\nvoid main(){\n  print(\"Hello World!\r\nIntroducing Dart " +
+                "/" + ProjectName + ".dart'"+ " as project_name;\nvoid main(){\n  print(\"Hello World!\r\nIntroducing Dart " +
             "with Deneb Studio\\r\\nHere is a Basic Math Operation: ${" + ProjectName + ".basicMathOperation()}\");\n}";
 
             if (projectType == ProjectType.ConsoleFull)
