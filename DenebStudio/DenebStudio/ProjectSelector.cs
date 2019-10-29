@@ -86,11 +86,6 @@ namespace DenebStudio
             }
 
             listCreate.AddRow(0, "Dart Console Full", "Aplicación de ejecutable en Consola");
-            listCreate.AddRow(0, "Dart Package Full", "Paquete de librerias");
-            listCreate.AddRow(0, "Dart Shelf", "Dart Shelf");
-            listCreate.AddRow(0, "Dart Web with Angular", "Aplicación web con Angular");
-            listCreate.AddRow(0, "Dart Web Simple", "Aplicación web básica");
-            listCreate.AddRow(0, "Dart Web Stagexl", "Aplicación web para juegos 2D");
             listCreate.AddRow(1, "Flutter App", "Aplicación básica de Flutter");
         }
 
@@ -126,7 +121,7 @@ namespace DenebStudio
             }
         }
 
-        private async void btnCreateProject_Click(object sender, EventArgs e)
+        private async Task CreateProject()
         {
             ProjectCreator projectCreator = null;
             if (listCreate.SelectedItems.Count > 0)
@@ -137,56 +132,32 @@ namespace DenebStudio
                 }
                 else if (listCreate.SelectedItems[0].Index == 1)
                 {
-                    projectCreator = new ProjectCreator(ProjectType.ConsoleFull);
-                }
-                else if (listCreate.SelectedItems[0].Index == 2)
-                {
-                    projectCreator = new ProjectCreator(ProjectType.ConsoleFull);
-                }
-                else if (listCreate.SelectedItems[0].Index == 3)
-                {
-                    projectCreator = new ProjectCreator(ProjectType.ConsoleFull);
-                }
-                else if (listCreate.SelectedItems[0].Index == 4)
-                {
-                    projectCreator = new ProjectCreator(ProjectType.ConsoleFull);
-                }
-                else if (listCreate.SelectedItems[0].Index == 5)
-                {
-                    projectCreator = new ProjectCreator(ProjectType.ConsoleFull);
-                }
-                else if (listCreate.SelectedItems[0].Index == 6)
-                {
-                    projectCreator = new ProjectCreator(ProjectType.ConsoleFull);
-                }
-                else if (listCreate.SelectedItems[0].Index == 7)
-                {
                     projectCreator = new ProjectCreator(ProjectType.FlutterApp);
                 }
-                else if (listCreate.SelectedItems[0].Index == 8)
-                {
-                    projectCreator = new ProjectCreator(ProjectType.FlutterApp);
-                }
-                else if (listCreate.SelectedItems[0].Index == 9)
-                {
-                    projectCreator = new ProjectCreator(ProjectType.FlutterApp);
-                }
-                else if (listCreate.SelectedItems[0].Index == 10)
-                {
-                    projectCreator = new ProjectCreator(ProjectType.FlutterApp);
-                } 
+
             }
 
             if (projectCreator != null)
             {
                 projectCreator.ShowDialog();
                 await Task.Delay(2000);
-                this.Close();
+                if (!projectCreator.EmptyProject)
+                {
+                    this.Close(); 
+                }
             }
-            
+
 
         }
 
+        private async void btnCreateProject_Click(object sender, EventArgs e)
+        {
+            await CreateProject();   
+        }
 
+        private async void listCreate_DoubleClick(object sender, EventArgs e)
+        {
+            await CreateProject();
+        }
     }
 }

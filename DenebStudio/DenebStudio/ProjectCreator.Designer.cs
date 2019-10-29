@@ -110,6 +110,7 @@
             this.prgCreating.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.prgCreating.TabIndex = 4;
             this.prgCreating.Value = 10;
+            this.prgCreating.Visible = false;
             // 
             // ProjectCreator
             // 
@@ -121,9 +122,13 @@
             this.Controls.Add(this.btnCreateProject);
             this.Controls.Add(this.txtProjectPath);
             this.Controls.Add(this.txtProjectName);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ProjectCreator";
+            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProjectCreator";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectCreator_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

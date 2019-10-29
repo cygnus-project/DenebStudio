@@ -163,6 +163,7 @@
             this.listCreate.TabIndex = 4;
             this.listCreate.UseCompatibleStateImageBehavior = false;
             this.listCreate.View = System.Windows.Forms.View.Tile;
+            this.listCreate.DoubleClick += new System.EventHandler(this.listCreate_DoubleClick);
             // 
             // materialLabel3
             // 

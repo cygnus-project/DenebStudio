@@ -15,6 +15,7 @@ namespace DenebStudio
 {
     public partial class ProjectCreator : MaterialForm
     {
+        public bool EmptyProject { get; set; }
         private string prjType = string.Empty;
         private ProjectType actualType;
         TemplateGeneration template = new TemplateGeneration();
@@ -41,6 +42,7 @@ namespace DenebStudio
 
         private async void btnCreateProject_Click(object sender, EventArgs e)
         {
+            prgCreating.Visible = true;
             string projectPath = Path.Combine(txtProjectPath.Text, txtProjectName.Text);
             File.WriteAllText(Application.StartupPath + "\\OpenedProject.deneb", projectPath);
             prgCreating.Value += 10; // 20
@@ -70,6 +72,11 @@ namespace DenebStudio
         {
             txtProjectName.Text = txtProjectName.Text.ToLower().Replace(" ", "_");
             txtProjectName.SelectionStart = txtProjectName.Text.Length;
+        }
+
+        private void ProjectCreator_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            EmptyProject = true;
         }
     }
 }
