@@ -98,7 +98,7 @@ namespace DenebStudio
             
         }
 
-        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        private void OpenProject()
         {
             /*using (var fbd = new FolderBrowserDialog())
             {
@@ -117,8 +117,13 @@ namespace DenebStudio
                 string project = listRecent.SelectedItems[0].SubItems[1].Text;
                 File.WriteAllText(Application.StartupPath + "\\OpenedProject.deneb", project);
                 Program.launch = true;
-                this.Close(); 
+                this.Close();
             }
+        }
+
+        private void btnOpenProject_Click(object sender, EventArgs e)
+        {
+            OpenProject();
         }
 
         private async Task CreateProject()
@@ -158,6 +163,11 @@ namespace DenebStudio
         private async void listCreate_DoubleClick(object sender, EventArgs e)
         {
             await CreateProject();
+        }
+
+        private void listRecent_DoubleClick(object sender, EventArgs e)
+        {
+            OpenProject();
         }
     }
 }

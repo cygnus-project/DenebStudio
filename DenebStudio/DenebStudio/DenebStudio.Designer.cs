@@ -53,6 +53,7 @@
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pnlMain.SuspendLayout();
             this.pnlCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
@@ -128,6 +129,7 @@
             // 
             this.pnlConsole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.pnlConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlConsole.Controls.Add(this.richTextBox1);
             this.pnlConsole.Controls.Add(this.txtConsole);
             this.pnlConsole.Controls.Add(this.pnlConsoleTitle);
             this.pnlConsole.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -139,9 +141,13 @@
             // 
             // txtConsole
             // 
-            this.txtConsole.Location = new System.Drawing.Point(5, 32);
+            this.txtConsole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.txtConsole.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtConsole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtConsole.Location = new System.Drawing.Point(0, 25);
             this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(654, 149);
+            this.txtConsole.ReadOnly = true;
+            this.txtConsole.Size = new System.Drawing.Size(669, 166);
             this.txtConsole.TabIndex = 1;
             this.txtConsole.Text = "";
             // 
@@ -308,6 +314,21 @@
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(55)))));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.ForeColor = System.Drawing.SystemColors.Info;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 166);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.richTextBox1.Multiline = false;
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(669, 25);
+            this.richTextBox1.TabIndex = 2;
+            this.richTextBox1.Text = "";
+            // 
             // DenebStudio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,6 +385,7 @@
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
         private FastColoredTextBoxNS.FastColoredTextBox txtCode;
         private System.Windows.Forms.RichTextBox txtConsole;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
