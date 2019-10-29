@@ -69,5 +69,35 @@ namespace DenebStudio.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] Inconsolata_Bold {
+            get {
+                object obj = ResourceManager.GetObject("Inconsolata_Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] Inconsolata_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Inconsolata_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] monaco {
+            get {
+                object obj = ResourceManager.GetObject("monaco", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

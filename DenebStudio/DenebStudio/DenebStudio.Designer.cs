@@ -34,6 +34,7 @@
             this.pnlCode = new System.Windows.Forms.Panel();
             this.txtCode = new FastColoredTextBoxNS.FastColoredTextBox();
             this.pnlConsole = new System.Windows.Forms.Panel();
+            this.txtConsole = new System.Windows.Forms.RichTextBox();
             this.pnlConsoleTitle = new System.Windows.Forms.Panel();
             this.materialLabel1 = new MaterialSkinPlus.Controls.MaterialLabel();
             this.pnlProjetManager = new System.Windows.Forms.Panel();
@@ -52,7 +53,7 @@
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtConsole = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pnlMain.SuspendLayout();
             this.pnlCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCode)).BeginInit();
@@ -101,16 +102,16 @@
         '\"',
         '\'',
         '\''};
-            this.txtCode.AutoScrollMinSize = new System.Drawing.Size(27, 14);
+            this.txtCode.AutoScrollMinSize = new System.Drawing.Size(29, 16);
             this.txtCode.BackBrush = null;
             this.txtCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.txtCode.CharHeight = 14;
-            this.txtCode.CharWidth = 8;
+            this.txtCode.CharHeight = 16;
+            this.txtCode.CharWidth = 9;
             this.txtCode.CurrentLineColor = System.Drawing.Color.Teal;
             this.txtCode.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCode.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCode.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.txtCode.Font = new System.Drawing.Font("Courier New", 11.25F);
             this.txtCode.ForeColor = System.Drawing.Color.White;
             this.txtCode.IndentBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtCode.IsReplaceMode = false;
@@ -128,6 +129,7 @@
             // 
             this.pnlConsole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.pnlConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlConsole.Controls.Add(this.richTextBox1);
             this.pnlConsole.Controls.Add(this.txtConsole);
             this.pnlConsole.Controls.Add(this.pnlConsoleTitle);
             this.pnlConsole.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -136,6 +138,18 @@
             this.pnlConsole.Name = "pnlConsole";
             this.pnlConsole.Size = new System.Drawing.Size(671, 193);
             this.pnlConsole.TabIndex = 0;
+            // 
+            // txtConsole
+            // 
+            this.txtConsole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.txtConsole.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtConsole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtConsole.Location = new System.Drawing.Point(0, 25);
+            this.txtConsole.Name = "txtConsole";
+            this.txtConsole.ReadOnly = true;
+            this.txtConsole.Size = new System.Drawing.Size(669, 166);
+            this.txtConsole.TabIndex = 1;
+            this.txtConsole.Text = "";
             // 
             // pnlConsoleTitle
             // 
@@ -259,26 +273,26 @@
             // abrirToolStripMenuItem1
             // 
             this.abrirToolStripMenuItem1.Name = "abrirToolStripMenuItem1";
-            this.abrirToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.abrirToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.abrirToolStripMenuItem1.Text = "Abrir";
             // 
             // abrirProjectoToolStripMenuItem
             // 
             this.abrirProjectoToolStripMenuItem.Name = "abrirProjectoToolStripMenuItem";
-            this.abrirProjectoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abrirProjectoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.abrirProjectoToolStripMenuItem.Text = "Abrir Projecto";
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // guardarComoToolStripMenuItem
             // 
             this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.guardarComoToolStripMenuItem.Text = "Guardar Como";
             this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.guardarComoToolStripMenuItem_Click);
             // 
@@ -300,13 +314,20 @@
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
-            // txtConsole
+            // richTextBox1
             // 
-            this.txtConsole.Location = new System.Drawing.Point(5, 32);
-            this.txtConsole.Name = "txtConsole";
-            this.txtConsole.Size = new System.Drawing.Size(654, 149);
-            this.txtConsole.TabIndex = 1;
-            this.txtConsole.Text = "";
+            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(55)))));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.ForeColor = System.Drawing.SystemColors.Info;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 166);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.richTextBox1.Multiline = false;
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(669, 25);
+            this.richTextBox1.TabIndex = 2;
+            this.richTextBox1.Text = "";
             // 
             // DenebStudio
             // 
@@ -364,6 +385,7 @@
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
         private FastColoredTextBoxNS.FastColoredTextBox txtCode;
         private System.Windows.Forms.RichTextBox txtConsole;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

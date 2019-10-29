@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectSelector));
-            this.materialRaisedButton1 = new MaterialSkinPlus.Controls.MaterialRaisedButton();
+            this.btnOpenProject = new MaterialSkinPlus.Controls.MaterialRaisedButton();
             this.materialLabel2 = new MaterialSkinPlus.Controls.MaterialLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.listRecent = new System.Windows.Forms.ListView();
@@ -46,21 +46,21 @@
             this.pnlSelector.SuspendLayout();
             this.SuspendLayout();
             // 
-            // materialRaisedButton1
+            // btnOpenProject
             // 
-            this.materialRaisedButton1.AutoSize = true;
-            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(263, 431);
-            this.materialRaisedButton1.MouseState = MaterialSkinPlus.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(133, 36);
-            this.materialRaisedButton1.TabIndex = 1;
-            this.materialRaisedButton1.Text = "Abrir Proyecto";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            this.btnOpenProject.AutoSize = true;
+            this.btnOpenProject.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnOpenProject.Depth = 0;
+            this.btnOpenProject.Icon = null;
+            this.btnOpenProject.Location = new System.Drawing.Point(263, 431);
+            this.btnOpenProject.MouseState = MaterialSkinPlus.MouseState.HOVER;
+            this.btnOpenProject.Name = "btnOpenProject";
+            this.btnOpenProject.Primary = true;
+            this.btnOpenProject.Size = new System.Drawing.Size(133, 36);
+            this.btnOpenProject.TabIndex = 1;
+            this.btnOpenProject.Text = "Abrir Proyecto";
+            this.btnOpenProject.UseVisualStyleBackColor = true;
+            this.btnOpenProject.Click += new System.EventHandler(this.btnOpenProject_Click);
             // 
             // materialLabel2
             // 
@@ -79,7 +79,7 @@
             // 
             this.panel1.Controls.Add(this.listRecent);
             this.panel1.Controls.Add(this.materialLabel2);
-            this.panel1.Controls.Add(this.materialRaisedButton1);
+            this.panel1.Controls.Add(this.btnOpenProject);
             this.panel1.Controls.Add(this.materialLabel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -101,6 +101,7 @@
             this.listRecent.TabIndex = 3;
             this.listRecent.UseCompatibleStateImageBehavior = false;
             this.listRecent.View = System.Windows.Forms.View.Tile;
+            this.listRecent.DoubleClick += new System.EventHandler(this.listRecent_DoubleClick);
             // 
             // imgList
             // 
@@ -163,6 +164,7 @@
             this.listCreate.TabIndex = 4;
             this.listCreate.UseCompatibleStateImageBehavior = false;
             this.listCreate.View = System.Windows.Forms.View.Tile;
+            this.listCreate.DoubleClick += new System.EventHandler(this.listCreate_DoubleClick);
             // 
             // materialLabel3
             // 
@@ -209,7 +211,7 @@
         }
 
         #endregion
-        private MaterialSkinPlus.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkinPlus.Controls.MaterialRaisedButton btnOpenProject;
         private MaterialSkinPlus.Controls.MaterialLabel materialLabel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
